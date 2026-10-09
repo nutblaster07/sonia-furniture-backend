@@ -6,7 +6,7 @@ import { PrismaClient } from '../generated/prisma/client.js';
 @Injectable()
 export class PrismaService extends PrismaClient implements OnModuleInit {
   constructor() {
-    const ca = process.env.DATABASE_CA_CERT;
+    const ca = process.env.DATABASE_CA_CERT?.replace(/\\n/g, '\n').trim();
 
     if (!ca) {
       throw new Error('DATABASE_CA_CERT environment variable is missing');

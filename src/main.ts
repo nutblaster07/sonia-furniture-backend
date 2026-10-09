@@ -16,14 +16,17 @@ async function bootstrap() {
   );
 
   app.enableCors({
-    origin: 'http://localhost:3000',
+    origin: [
+      'http://localhost:3000',
+      'https://sonia-furniture-frontend-k9ue.vercel.app/',
+    ],
     credentials: true,
   });
 
-const port = Number(process.env.PORT) || 5000;
+  const port = Number(process.env.PORT) || 5000;
 
-await app.listen(port, '0.0.0.0');
-console.log(`Server listening on port ${port}`);
+  await app.listen(port, '0.0.0.0');
+  console.log(`Server listening on port ${port}`);
 }
 
 bootstrap();

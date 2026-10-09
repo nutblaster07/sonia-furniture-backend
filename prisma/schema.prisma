@@ -491,6 +491,7 @@ model BlogPost {
   authorName      String?
   seoTitle        String?
   seoDescription  String?
+  seoKeywords     String?  
   status          BlogPostStatus @default(DRAFT)
   isFeatured      Boolean        @default(false)
   publishedAt     DateTime?

@@ -15,13 +15,17 @@ async function bootstrap() {
     }),
   );
 
-  app.enableCors({
-    origin: [
-      'http://localhost:3000',
-      'https://sonia-furniture-frontend-k9ue.vercel.app/',
-    ],
-    credentials: true,
-  });
+
+app.enableCors({
+  origin: [
+    'http://localhost:3000',
+    'https://sonia-furniture-frontend-k9ue.vercel.app',
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+});
+
 
   const port = Number(process.env.PORT) || 5000;
 

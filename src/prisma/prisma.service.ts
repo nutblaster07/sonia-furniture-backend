@@ -7,6 +7,10 @@ import { PrismaClient } from '../generated/prisma/client.js';
 export class PrismaService extends PrismaClient implements OnModuleInit {
   constructor() {
     const ca = process.env.DATABASE_CA_CERT?.replace(/\\n/g, '\n').trim();
+    console.log('DATABASE_CA_CERT present:', Boolean(ca));
+    console.log('DATABASE_CA_CERT has PEM header:', ca?.includes('-----BEGIN CERTIFICATE-----'));
+    console.log('DATABASE_CA_CERT has PEM footer:', ca?.includes('-----END CERTIFICATE-----'));
+    console.log('DATABASE_CA_CERT length:', ca?.length);
 
     if (!ca) {
       throw new Error('DATABASE_CA_CERT environment variable is missing');
